@@ -5015,13 +5015,11 @@ window {
 // Windows button
 
 %windows-button {
-  min-height: 22px;
-  min-width: 22px;
-  padding: 0;
-  margin: 0 $space-size / 2;
+  border-radius: 9999px;
 
   &.minimize, &.maximize, &.close {
     color: $titlebar-text-secondary;
+    border-radius: 9999px;
 
     image {
       padding: 0;
@@ -5055,24 +5053,28 @@ $window-space: if($window_button == 'mac', $space-size * 1.5, $space-size);
 
 headerbar windowcontrols {
   border-spacing: $space-size;
+  border-radius: 9999px;
 
   &:not(.empty) {
     &.start:dir(ltr),
     &.end:dir(rtl) {
       margin-right: $window-space;
       margin-left: $window-space;
+      border-radius: 9999px;
     }
 
     &.start:dir(rtl),
     &.end:dir(ltr) {
       margin-left: $window-space;
       margin-right: $window-space;
+      border-radius: 9999px;
     }
   }
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %circular-button;
     @extend %windows-button;
+    border-radius: 9999px;
   }
 }
 
