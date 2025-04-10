@@ -5015,10 +5015,6 @@ window {
 // Windows button
 
 %windows-button {
-  min-height: 22px;
-  min-width: 22px;
-  padding: 0;
-  margin: 0 $space-size / 2;
   border-radius: 9999px;
 
   &.minimize, &.maximize, &.close {
