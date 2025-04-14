@@ -5052,30 +5052,66 @@ window {
 $window-space: if($window_button == 'mac', $space-size * 1.5, $space-size);
 
 headerbar windowcontrols {
-  border-spacing: $space-size;
+  //border-spacing: $space-size;
   border-radius: 9999px;
+
+///  > button 
+///  &.start {
+///    background-color: transparent;
+///    margin-left: 6px;
+///    > button:first-child {
+///      padding-left: 6px;
+///      background-color: transparent;
+///    }
+///  }
+///  &.end {
+///    background-color: transparent;
+///    margin-right: 6px;
+///    > button:last-child {
+///      padding-right: 6px;
+///      background-color: transparent;
+///    }
+///  }
 
   &:not(.empty) {
     &.start:dir(ltr),
     &.end:dir(rtl) {
       margin-right: $window-space;
       margin-left: $window-space;
+      //margin: 6px;
       border-radius: 9999px;
     }
-
     &.start:dir(rtl),
     &.end:dir(ltr) {
       margin-left: $window-space;
       margin-right: $window-space;
+      //margin: 6px;
       border-radius: 9999px;
     }
   }
-
   button:not(.suggested-action):not(.destructive-action) {
     @extend %circular-button;
     @extend %windows-button;
+    background-color: transparent;
     border-radius: 9999px;
   }
+
+//  &.start {
+//    background-color: transparent;
+//    margin-left: 3px;
+//    > button:first-child {
+//      padding-left: 6px;
+//      background-color: transparent;
+//    }
+//  }
+//  &.end {
+//    background-color: transparent;
+//    margin-right: 3px;
+//    > button:last-child {
+//      padding-right: 6px;
+//      background-color: transparent;
+//    }
+//  }
 }
 
 
