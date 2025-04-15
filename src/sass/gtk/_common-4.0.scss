@@ -1,4 +1,3 @@
-
 /***************
  * Base States *
  ***************/
@@ -432,28 +431,45 @@ editablelabel > stack > text {
  ***********/
 // stuff for .needs-attention
 @keyframes needs-attention {
-  from { background-image: radial-gradient(farthest-side, $primary 0%, transparentize($primary, 1) 0%); }
-  to { background-image: radial-gradient(farthest-side, $primary 95%, transparentize($primary, 1)); }
+  from {
+    background-image: radial-gradient(
+      farthest-side,
+      $primary 0%,
+      transparentize($primary, 1) 0%
+    );
+  }
+  to {
+    background-image: radial-gradient(
+      farthest-side,
+      $primary 95%,
+      transparentize($primary, 1)
+    );
+  }
 }
 
 %button-on-dark {
   color: on(dark, secondary);
 
-  &:focus, &:hover, &:active, &:checked { color: on(dark); }
-  &:disabled { color: on(dark, secondary-disabled); }
-  &:checked:disabled { color: on(dark, disabled); }
+  &:focus,
+  &:hover,
+  &:active,
+  &:checked {
+    color: on(dark);
+  }
+  &:disabled {
+    color: on(dark, secondary-disabled);
+  }
+  &:checked:disabled {
+    color: on(dark, disabled);
+  }
 }
 
 %button-on-indicator {
   background-color: $base;
   color: $text;
 
-  &:hover {
-    background-color: mix($text, $base, 10%);
-    color: $text;
-  }
-
-  &:checked, &:checked:hover {
+  &:checked,
+  &:checked:hover {
     background-color: on($indicator);
     color: $indicator;
   }
@@ -462,11 +478,14 @@ editablelabel > stack > text {
 %flat-button-on-indicator {
   color: on($indicator, secondary);
 
-  &:hover, &:active, &:focus:not(:hover):not(:active) &.keyboard-activating {
+  &:hover,
+  &:active,
+  &:focus:not(:hover):not(:active) &.keyboard-activating {
     color: on($indicator);
   }
 
-  &:checked, &:checked:hover {
+  &:checked,
+  &:checked:hover {
     background-color: on($indicator);
     color: $indicator;
   }
@@ -479,75 +498,112 @@ editablelabel > stack > text {
 %button-basic {
   @include button(normal);
 
-  &:focus { @include button(focus); }
+  &:focus {
+    @include button(focus);
+  }
 
-  &:hover { @include button(hover); -gtk-icon-filter: brightness(1.2); }
+  &:hover {
+    @include button(hover);
+    -gtk-icon-filter: brightness(1.2);
+  }
 
-  &.keyboard-activating, &:active { @include button(active); }
+  &.keyboard-activating,
+  &:active {
+    @include button(active);
+  }
 
-  &:disabled { @include button(disabled); }
+  &:disabled {
+    @include button(disabled);
+  }
 
-  &:checked { @include button(checked); }
+  &:checked {
+    @include button(checked);
+  }
 
-  &:checked:hover { @include button(checked-hover); }
+  &:checked:hover {
+    @include button(checked-hover);
+  }
 
-  &:checked:disabled { @include button(checked-disabled); }
+  &:checked:disabled {
+    @include button(checked-disabled);
+  }
 }
 
 %button-flat-simple {
   @include button(flat-normal);
 
-  &:focus:not(:hover):not(:active) { @include button(flat-focus); }
+  &:focus:not(:hover):not(:active) {
+    @include button(flat-focus);
+  }
 
-  &:hover { @include button(flat-hover); }
+  &:hover {
+    @include button(flat-hover);
+  }
 
-  &:active { @include button(flat-active); }
+  &:active {
+    @include button(flat-active);
+  }
 
-  &:disabled { @include button(flat-disabled); }
+  &:disabled {
+    @include button(flat-disabled);
+  }
 }
 
 %button-flat {
   @include button(flat-normal);
 
-  &:focus:not(:hover):not(:active) { @include button(flat-focus); }
+  &:focus:not(:hover):not(:active) {
+    @include button(flat-focus);
+  }
 
-  &:hover { @include button(flat-hover); }
+  &:hover {
+    @include button(flat-hover);
+  }
 
-  &:active { @include button(flat-active); }
+  &:active {
+    @include button(flat-active);
+  }
 
-  &:disabled { @include button(flat-disabled); }
+  &:disabled {
+    @include button(flat-disabled);
+  }
 
-  &:checked, &:checked:hover { @include button(flat-checked); }
+  &:checked,
+  &:checked:hover {
+    @include button(flat-checked);
+  }
 
-  &:checked:disabled { @include button(flat-checked-disabled); }
+  &:checked:disabled {
+    @include button(flat-checked-disabled);
+  }
 }
 
 %opaque_button {
   box-shadow: none;
 
   .osd &:focus:focus-visible {
-    outline-color: rgba(white, 0.15)
+    outline-color: rgba($white, 0.15);
   }
 
   &:hover {
-    background-image: image(gtkalpha(currentColor, .1));
+    background-image: image(gtkalpha(currentColor, 0.1));
   }
 
   &.keyboard-activating,
   &:active {
-    background-image: image(transparentize(black, .8));
+    background-image: image(transparentize(black, 0.8));
   }
 
   &:checked {
-    background-image: image(transparentize(black, .85));
+    background-image: image(transparentize(black, 0.85));
 
     &:hover {
-      background-image: image(transparentize(black, .95));
+      background-image: image(transparentize(black, 0.95));
     }
 
     &.keyboard-activating,
     &:active {
-      background-image: image(transparentize(black, .7));
+      background-image: image(transparentize(black, 0.7));
     }
   }
 }
@@ -563,15 +619,21 @@ button {
   min-height: 24px;
   min-width: 16px;
   padding: ($medium-size - 24px) / 2 ($medium-size - 16px) / 2;
-  border-radius: $corner-radius;
+  border-radius: $modal-radius;
   font-weight: 500;
   @extend %button-basic;
 
-  &:drop(active) { @include button(hover); }
+  &:drop(active) {
+    @include button(hover);
+  }
 
-  &.flat { @extend %button-flat; }
+  &.flat {
+    @extend %button-flat;
+  }
 
-  separator { margin: 4px 1px; }
+  separator {
+    margin: 4px 1px;
+  }
 
   &.opaque {
     @extend %opaque_button;
@@ -594,7 +656,8 @@ button {
   }
 
   // NOTE: Some image-only buttons use this as well
-  &.text-button.image-button, &.image-text-button {
+  &.text-button.image-button,
+  &.image-text-button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
     border-radius: $corner-radius;
@@ -610,36 +673,50 @@ button {
     }
 
     label {
-      &:first-child { margin-left: 16px - ($medium-size - 24px) / 2; }
+      &:first-child {
+        margin-left: 16px - ($medium-size - 24px) / 2;
+      }
 
-      &:last-child { margin-right: 16px - ($medium-size - 24px) / 2; }
+      &:last-child {
+        margin-right: 16px - ($medium-size - 24px) / 2;
+      }
     }
 
     &.flat label {
-      &:first-child { margin-left: 12px - ($medium-size - 24px) / 2; }
+      &:first-child {
+        margin-left: 12px - ($medium-size - 24px) / 2;
+      }
 
-      &:last-child { margin-right: 12px - ($medium-size - 24px) / 2; }
+      &:last-child {
+        margin-right: 12px - ($medium-size - 24px) / 2;
+      }
     }
 
-    image:not(:only-child) { margin: 0 (24px - 16px) / 2; }
+    image:not(:only-child) {
+      margin: 0 (24px - 16px) / 2;
+    }
   }
 
   &.arrow-button {
     padding-left: $space-size * 1.5;
     padding-right: $space-size * 1.5;
 
-    > box { border-spacing: $space-size - 2px; }
+    > box {
+      border-spacing: $space-size - 2px;
+    }
 
     &.text-button {
       padding-left: $space-size * 2 + 4px;
       padding-right: $space-size * 2 + 4px;
 
-      > box { border-spacing: $space-size; }
+      > box {
+        border-spacing: $space-size;
+      }
     }
   }
 
   @at-root %pill-button,
-  &.pill {
+    &.pill {
     padding: $space-size * 1.5 $space-size * 5;
     border-radius: $circular-radius;
   }
@@ -672,11 +749,14 @@ button {
         @include button(checked-hover);
       }
 
-      &:disabled { @include button(checked-disabled); }
-
+      &:disabled {
+        @include button(checked-disabled);
+      }
 
       &.keyboard-activating,
-      &:active { background-image: none; }
+      &:active {
+        background-image: none;
+      }
 
       &.has-open-popup {
         background-image: none;
@@ -707,7 +787,8 @@ button {
 
   .linked:not(.vertical) > &.flat,
   .linked.vertical > &.flat {
-    &:not(:only-child) { // specificity bump
+    &:not(:only-child) {
+      // specificity bump
       background-color: $overlay-normal;
     }
 
@@ -729,7 +810,7 @@ button {
     padding: ($medium-size - 24px) / 2;
     box-shadow: none;
     background-color: rgba(black, 0.35);
-    color: white;
+    color: $white;
 
     > image {
       padding: 0;
@@ -745,17 +826,17 @@ button {
 
     &:hover {
       background-color: rgba(black, 0.45);
-      color: white;
+      color: $white;
     }
 
     &:active {
       background-color: rgba(black, 0.65);
-      color: white;
+      color: $white;
     }
 
     &:disabled {
       background-color: rgba(black, 0.15);
-      color: rgba(white, 0.35);
+      color: rgba($white, 0.35);
     }
 
     // &.image-button { padding: ($large-size - 24px) / 2; }
@@ -763,27 +844,40 @@ button {
 
   // Suggested and Destructive Action buttons
   @each $b_type, $b_color in (suggested-action, $suggested),
-                             (destructive-action, $destructive) {
+    (destructive-action, $destructive)
+  {
     &.#{$b_type} {
       background-color: $b_color;
       color: on($b_color);
       box-shadow: none;
 
-      &:hover { background-color: mix(on($b_color), $b_color, 10%); }
+      &:hover {
+        background-color: mix(on($b_color), $b_color, 10%);
+      }
 
-      &:disabled { @include button(disabled); }
+      &:disabled {
+        @include button(disabled);
+      }
 
-      &:checked { background-color: mix(on($b_color), $b_color, 30%); }
+      &:checked {
+        background-color: mix(on($b_color), $b_color, 30%);
+      }
 
-      &:focus { box-shadow: 0 0 0 2px rgba($b_color, 0.35); }
+      &:focus {
+        box-shadow: 0 0 0 2px rgba($b_color, 0.35);
+      }
 
       &.flat {
         background-color: transparent;
         color: $b_color;
 
-        &:disabled { @include button(flat-disabled); }
+        &:disabled {
+          @include button(flat-disabled);
+        }
 
-        &:checked { background-color: rgba($b_color, 0.3); }
+        &:checked {
+          background-color: rgba($b_color, 0.3);
+        }
       }
     }
   }
@@ -805,7 +899,9 @@ button {
 
     &.needs-attention {
       > label,
-      > image { @extend %needs-attention; }
+      > image {
+        @extend %needs-attention;
+      }
 
       &:checked {
         > label,
@@ -820,18 +916,27 @@ button {
   // hide separators
   &.font,
   &.file {
-    separator { @extend %hide_separators; }
+    separator {
+      @extend %hide_separators;
+    }
 
-    > box { border-spacing: $space-size; }
-    > box > box > label { font-weight: bold; }
+    > box {
+      border-spacing: $space-size;
+    }
+    > box > box > label {
+      font-weight: bold;
+    }
   }
 
   @at-root %circular-button,
-  &.close,
-  &.circular { // The Bloody Circul Button
+    &.close,
+    &.circular {
+    // The Bloody Circul Button
     border-radius: $circular-radius;
 
-    label { padding: 0; }
+    label {
+      padding: 0;
+    }
   }
 }
 
@@ -841,18 +946,24 @@ menubutton {
     color: inherit;
   }
 
-  &.circular > button { @extend %circular-button; }
-  &.flat > button { @extend %button-flat; }
-  &.pill > button { @extend %pill-button; }
+  &.circular > button {
+    @extend %circular-button;
+  }
+  &.flat > button {
+    @extend %button-flat;
+  }
+  &.pill > button {
+    @extend %pill-button;
+  }
 
   &.suggested-action {
     background-color: $suggested;
-    color: white;
+    color: $white;
   }
 
   &.destructive-action {
     background-color: $destructive;
-    color: white;
+    color: $white;
   }
 
   &.opaque {
@@ -865,14 +976,16 @@ menubutton {
   &.opaque {
     border-radius: $corner-radius;
 
-    &.circular, &.pill {
+    &.circular,
+    &.pill {
       border-radius: $circular-radius;
     }
 
     > button {
       @extend %button-flat;
 
-      &, &:checked {
+      &,
+      &:checked {
         background-color: transparent;
         color: inherit;
       }
@@ -909,7 +1022,8 @@ menubutton {
 splitbutton {
   border-radius: $corner-radius;
 
-  &, & > separator {
+  &,
+  & > separator {
     transition: $transition;
     transition-property: background-color;
   }
@@ -960,7 +1074,7 @@ splitbutton {
   }
 
   @at-root %flat_split_button,
-  &.flat {
+    &.flat {
     > separator {
       background: $border;
     }
@@ -989,12 +1103,12 @@ splitbutton {
 
   &.suggested-action {
     background-color: $suggested;
-    color: white;
+    color: $white;
   }
 
   &.destructive-action {
     background-color: $destructive;
-    color: white;
+    color: $white;
   }
 
   &.opaque {
@@ -1005,18 +1119,24 @@ splitbutton {
   &.suggested-action,
   &.destructive-action,
   &.opaque {
-    > button, > menubutton > button {
+    > button,
+    > menubutton > button {
       @extend %button-flat;
 
-      &, &:checked {
+      &,
+      &:checked {
         color: inherit;
         background-color: transparent;
       }
     }
 
     > menubutton > button {
-      &:dir(ltr) { box-shadow: inset 1px 0 $border; }
-      &:dir(rtl) { box-shadow: inset -1px 0 $border; }
+      &:dir(ltr) {
+        box-shadow: inset 1px 0 $border;
+      }
+      &:dir(rtl) {
+        box-shadow: inset -1px 0 $border;
+      }
     }
   }
 
@@ -1031,15 +1151,23 @@ buttoncontent {
   > label {
     font-weight: bold;
 
-    &:dir(ltr) { padding-right: 2px; }
-    &:dir(rtl) { padding-left: 2px; }
+    &:dir(ltr) {
+      padding-right: 2px;
+    }
+    &:dir(rtl) {
+      padding-left: 2px;
+    }
   }
 
   .arrow-button > box > &,
   splitbutton > button > & {
     > label {
-      &:dir(ltr) { padding-right: 0; }
-      &:dir(rtl) { padding-left: 0; }
+      &:dir(ltr) {
+        padding-right: 0;
+      }
+      &:dir(rtl) {
+        padding-left: 0;
+      }
     }
   }
 }
@@ -1060,7 +1188,9 @@ button.color {
   background-position: right 3px;
   background-size: 6px 6px;
 
-  &:dir(rtl) { background-position: left 3px; }
+  &:dir(rtl) {
+    background-position: left 3px;
+  }
 }
 
 %linked {
@@ -1100,19 +1230,14 @@ button.color {
 }
 
 // .linked >                  element            child
-$deprecated_linked_widgets: ("combobox",         "> box > button.combo"),
-                            ("appchooserbutton", "> combobox > box > button.combo");
+$deprecated_linked_widgets: ('combobox', '> box > button.combo'),
+  ('appchooserbutton', '> combobox > box > button.combo');
 
 // .linked >        element       child
-$_linked_widgets: ("%button",     ""),
-                  ("button",      ""),
-                  ("menubutton",  "> button"),
-                  ("dropdown",    "> button"),
-                  ("colorbutton", "> button"),
-                  ("fontbutton",  "> button"),
-                  ("tabbutton",   "> button"),
-                  ("%entry",      ""),
-                  ("entry",       "");
+$_linked_widgets: ('%button', ''), ('button', ''), ('menubutton', '> button'),
+  ('dropdown', '> button'), ('colorbutton', '> button'),
+  ('fontbutton', '> button'), ('tabbutton', '> button'), ('%entry', ''),
+  ('entry', '');
 
 $_linked_widgets: join($_linked_widgets, $deprecated_linked_widgets);
 
@@ -1155,13 +1280,19 @@ list > row button.image-button:not(.flat) {
   background-color: transparent;
   box-shadow: none;
   border: none;
-  &:hover { @include button(hover); }
+  &:hover {
+    @include button(hover);
+  }
   &:active,
-  &:checked { @include button(active); }
+  &:checked {
+    @include button(active);
+  }
 
   @each $b_type, $b_color in (suggested-action, $suggested),
-                             (destructive-action, $destructive) {
-    &.#{$b_type} { // allow colored buttons in lists #3643
+    (destructive-action, $destructive)
+  {
+    &.#{$b_type} {
+      // allow colored buttons in lists #3643
       background-color: $b_color;
       color: on($b_color);
     }
@@ -1651,12 +1782,14 @@ headerbar {
   }
 
   .title {
-    padding: 0 $space-size * 2;
+    /*padding: 0 $space-size * 2;*/
+    padding: 0;
     font-weight: bold;
   }
 
   .subtitle {
-    padding: 0 $space-size * 2;
+    /*padding: 0 $space-size * 2;*/
+    padding: 0;
     font-size: smaller;
   }
 
@@ -4331,7 +4464,7 @@ window.dialog.message { // Message Dialog styling
   }
 
   .titlebar {
-    min-height: $small-size;
+    //min-height: $small-size;
     border-style: none;
     box-shadow: inset 0 1px highlight($surface);
     background-color: $surface;
@@ -5015,103 +5148,65 @@ window {
 // Windows button
 
 %windows-button {
-  border-radius: 9999px;
+  min-height: 22px;
+  min-width: 22px;
+  padding: 0;
+  margin: $space-size * 3 $space-size - 4px;
+  /* margin: 0 $space-size - 4px; */
 
-  &.minimize, &.maximize, &.close {
+  &.minimize,
+  &.maximize,
+  &.close {
     color: $titlebar-text-secondary;
-    border-radius: 9999px;
+    background-color: gtkalpha(currentColor, 0.1);
 
     image {
       padding: 0;
-      margin: 0;
-      background-color: transparent;
+      background: none;
+      box-shadow: none;
     }
 
     &:hover {
-      box-shadow: none;
-      background-color: $titlebar-indicator;
-      color: on($titlebar-indicator);
+      color: $titlebar-text;
+      background-color: gtkalpha(currentColor, 0.15);
+      box-shadow:
+        0 1px 3px rgba(black, 0.1),
+        inset 0 1px highlight($titlebar);
     }
 
     &:active {
-      color: on($titlebar-indicator);
-      background-color: $titlebar-indicator;
-      background-image: radial-gradient(circle, on($titlebar-indicator, divider) 10%, transparent 0%);
+      color: $titlebar-text;
+      background-color: gtkalpha(currentColor, 0.2);
     }
 
     &:backdrop {
-      color: $titlebar-text-secondary-disabled;
-
-      &:hover {
-        color: on($titlebar-indicator);
-      }
+      opacity: 0.65;
     }
   }
 }
 
-$window-space: if($window_button == 'mac', $space-size * 1.5, $space-size);
+$window-space: if($window_button == 'mac', $space-size, $space-size - 2px);
 
-headerbar windowcontrols {
-  //border-spacing: $space-size;
-  border-radius: 9999px;
-
-///  > button 
-///  &.start {
-///    background-color: transparent;
-///    margin-left: 6px;
-///    > button:first-child {
-///      padding-left: 6px;
-///      background-color: transparent;
-///    }
-///  }
-///  &.end {
-///    background-color: transparent;
-///    margin-right: 6px;
-///    > button:last-child {
-///      padding-right: 6px;
-///      background-color: transparent;
-///    }
-///  }
+windowcontrols {
+  border-spacing: $space-size;
 
   &:not(.empty) {
     &.start:dir(ltr),
     &.end:dir(rtl) {
       margin-right: $window-space;
       margin-left: $window-space;
-      //margin: 6px;
-      border-radius: 9999px;
     }
     &.start:dir(rtl),
     &.end:dir(ltr) {
       margin-left: $window-space;
       margin-right: $window-space;
-      //margin: 6px;
-      border-radius: 9999px;
     }
   }
+
   button:not(.suggested-action):not(.destructive-action) {
     @extend %circular-button;
     @extend %windows-button;
-    background-color: transparent;
-    border-radius: 9999px;
-  }
-
-//  &.start {
-//    background-color: transparent;
-//    margin-left: 3px;
-//    > button:first-child {
-//      padding-left: 6px;
-//      background-color: transparent;
-//    }
-//  }
-//  &.end {
-//    background-color: transparent;
-//    margin-right: 3px;
-//    > button:last-child {
-//      padding-right: 6px;
-//      background-color: transparent;
-//    }
-//  }
+    }
 }
 
 
